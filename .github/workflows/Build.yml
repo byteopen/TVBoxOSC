@@ -62,7 +62,7 @@ jobs:
         run: |
           cp -rf ../Box/* ./
           ls
-          chomd -R 777 ../replace.sh
+          chmod -R 777 ../replace.sh
           sh ../replace.sh
           echo '修改VersionName'
           if [ "${{ matrix.userName }}" == "takagen99" ]; then
