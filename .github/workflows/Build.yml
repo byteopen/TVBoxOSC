@@ -1,4 +1,4 @@
-name: Test
+name: Build
 
 on:
   schedule:
@@ -62,7 +62,8 @@ jobs:
         run: |
           cp -rf ../Box/* ./
           ls
-          ./replace.sh
+          chomd -R 777 ../replace.sh
+          sh ../replace.sh
           echo '修改VersionName'
           if [ "${{ matrix.userName }}" == "takagen99" ]; then
             # 进行 sed 修改
