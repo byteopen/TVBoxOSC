@@ -49,14 +49,20 @@ jobs:
       - name: Checkout Source Code
         if: ${{ env.commit }}
         run: |
+          pwd
+          ls
           git clone ${{ env.upStream }} TVBoxOSC
           cd TVBoxOSC
           git checkout ${{ env.commit }}
           echo "tag=$(git log --date=format:'%Y%m%d-%H%M' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
+          
       - name: Extra Modify
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
+          cp -rf ../Box/* ./
+          ls
+          ./replace.sh
           echo '修改VersionName'
           if [ "${{ matrix.userName }}" == "takagen99" ]; then
             # 进行 sed 修改
