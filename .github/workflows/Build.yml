@@ -32,6 +32,10 @@ jobs:
             repoName: Box
             branchName: main
             java_ver: 17
+          - userName: byteopen
+            repoName: box
+            branchName: main
+            java_ver: 17
     steps:
       - name: Checkout
         uses: actions/checkout@v4
