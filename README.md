@@ -11,3 +11,4 @@ This repo relies on the following third-party projects:
 - [q215613905/TVBoxOS](https://github.com/q215613905/TVBoxOS) (Updated: 1a94c846b5845c0556decb1c2c2ca19db2fabe07)
 - [takagen99/Box](https://github.com/takagen99/Box) (Updated: 2a3af7f08fc8133bc40abccf9b71b3747b19bb94)
 - [rexyu/Box](https://github.com/rexyu/Box) (Updated: 30b48264a8f254fd20c0e20865df6247fc8933bd)
+- [byteopen/box](https://github.com/byteopen/box) (Updated: 30b48264a8f254fd20c0e20865df6247fc8933bd)
