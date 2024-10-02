@@ -1,4 +1,4 @@
-# TVBoxOSC 
+# TVBoxOSC
 
 ![Build](https://shields.io/github/actions/workflow/status/o0HalfLife0o/TVBoxOSC/test.yml?branch=master&logo=github&label=Build)
 [![Channel](https://img.shields.io/badge/Follow-Telegram-blue.svg?logo=telegram)](https://t.me/TVBoxOSC)
@@ -8,6 +8,6 @@
 ## Credits
 This repo relies on the following third-party projects:
 - [CatVodTVOfficial/TVBoxOSC](https://github.com/CatVodTVOfficial/TVBoxOSC)
-- [q215613905/TVBoxOS](https://github.com/q215613905/TVBoxOS) (Updated: 1a94c846b5845c0556decb1c2c2ca19db2fabe07)
-- [takagen99/Box](https://github.com/takagen99/Box) (Updated: 2a3af7f08fc8133bc40abccf9b71b3747b19bb94)
-- [rexyu/Box](https://github.com/rexyu/Box) (Updated: 30b48264a8f254fd20c0e20865df6247fc8933bd)
+- [q215613905/TVBoxOS](https://github.com/q215613905/TVBoxOS) (Updated: a545c27b99b6d6d9e54196b8a0adcf3b56a97ddf)
+- [takagen99/Box](https://github.com/takagen99/Box) (Updated: 06bfe75bffefbef060785408d5712a960779ec79)
+- [rexyu/Box](https://github.com/rexyu/Box) (Updated: c25b886c273775ef9b1ae28241ce9077e39becf9)
