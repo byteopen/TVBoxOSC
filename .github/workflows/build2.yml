@@ -21,10 +21,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - userName: takagen99
-            repoName: Box
-            branchName: main
-            java_ver: 17
           - userName: rexyu
             repoName: Box
             branchName: main
@@ -38,10 +34,12 @@ jobs:
         run: |
           upStream=https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}
           echo "upStream=$upStream" >> $GITHUB_ENV
-          commit=$(curl -sL $upStream/commits/${{ matrix.branchName }} |grep -o "/${{ matrix.userName }}/${{ matrix.repoName }}/commit/[a-z0-9]\+" |head -1 | cut -d\/ -f5)
+          sourceUrl=$upStream/commits/${{ matrix.branchName }})
+          commit=$(curl -sL $sourceUrl |grep -o "/${{ matrix.userName }}/${{ matrix.repoName }}/commit/[a-z0-9]\+" |head -1 | cut -d\/ -f5)
           echo  $upStream
           echo hello
-          echo $(curl -sL $upStream/commits/${{ matrix.branchName }})
+          echo  $sourceUrl
+          echo
           echo "commit=$commit" >> $GITHUB_ENV
           echo "commitS=${commit:0:7}" >> $GITHUB_ENV
       - name: Checkout Source Code
