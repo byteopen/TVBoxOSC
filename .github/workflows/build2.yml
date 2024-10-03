@@ -40,6 +40,7 @@ jobs:
           echo "upStream=$upStream" >> $GITHUB_ENV
           commit=$(curl -sL $upStream/commits/${{ matrix.branchName }} |grep -o "/${{ matrix.userName }}/${{ matrix.repoName }}/commit/[a-z0-9]\+" |head -1 | cut -d\/ -f5)
           commit="ab68de79d178351fdc2dc4178392478674f61715"
+          curl -sL $upStream/commits/${{ matrix.branchName }}
           if ! grep -q "$commit" README.md || [ "${{ inputs.rebuild }}" == "true" ]; then
             echo "commit=$commit" >> $GITHUB_ENV
             echo "commitS=${commit:0:7}" >> $GITHUB_ENV
