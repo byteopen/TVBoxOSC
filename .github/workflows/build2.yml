@@ -34,8 +34,8 @@ jobs:
         run: |
           upStream=https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}
           echo "upStream=$upStream" >> $GITHUB_ENV
-          sourceUrl=$upStream/commits/${{ matrix.branchName }})
-          commit=$(curl -sL $sourceUrl) |grep -o "/${{ matrix.userName }}/${{ matrix.repoName }}/commit/[a-z0-9]\+" |head -1 | cut -d\/ -f5)
+          sourceUrl=$upStream/commits/${{ matrix.branchName }}
+          commit=$(curl -sL $sourceUrl |grep -o "/${{ matrix.userName }}/${{ matrix.repoName }}/commit/[a-z0-9]\+" |head -1 | cut -d\/ -f5)
           echo  $upStream
           echo hello
           echo  $sourceUrl
