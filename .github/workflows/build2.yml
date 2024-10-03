@@ -40,11 +40,11 @@ jobs:
           echo "upStream=$upStream" >> $GITHUB_ENV
           commit=$(curl -sL $upStream/commits/${{ matrix.branchName }} |grep -o "/${{ matrix.userName }}/${{ matrix.repoName }}/commit/[a-z0-9]\+" |head -1 | cut -d\/ -f5)
           echo  $upStream
-          echo $(curl -sL $upStream/commits/${{ matrix.branchName }}
+          echo hello
+          echo $(curl -sL $upStream/commits/${{ matrix.branchName }})
           echo "commit=$commit" >> $GITHUB_ENV
           echo "commitS=${commit:0:7}" >> $GITHUB_ENV
       - name: Checkout Source Code
-        if: ${{ env.commit }}
         run: |
           pwd
           ls
@@ -54,7 +54,6 @@ jobs:
           echo "tag=$(git log --date=format:'%Y%m%d-%H%M' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
           
       - name: Extra Modify
-        if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
           cp -rf ../Box/* ./
@@ -78,7 +77,6 @@ jobs:
             sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" build.gradle
           fi
       - name: Compress Source Code
-        if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
           #zip -q -x ".git/*" -x  ".github/*" -r source-${{ env.commitS }}.zip .
@@ -103,15 +101,12 @@ jobs:
           distribution: temurin
           java-version: ${{ matrix.java_ver }}
       - uses: gradle/actions/setup-gradle@v4
-        if: ${{ env.commit }}
       - name: Build With Gradle
-        if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
           chmod +x gradlew
           ./gradlew assemblerelease --build-cache --parallel --daemon --warning-mode all
       - name: Prepare App
-        if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
           rm -rf apk/
@@ -130,7 +125,6 @@ jobs:
           done
           mv source-${{ env.commitS }}.* apk/
       - name: Release Note
-        if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
           lastCommit=$(grep "${{ matrix.userName }}\/${{ matrix.repoName }}" ${{ github.workspace }}/README.md |grep -o '[a-z0-9]\{40\}')
@@ -144,7 +138,6 @@ jobs:
           echo -e '\n```' >> apk/${{ matrix.userName }}-Release.log
       - name: Upload App To Artifact
         uses: actions/upload-artifact@v4
-        if: ${{ env.commit }}
         with:
           name: ${{ matrix.userName }}-${{ matrix.repoName }}
           path: |
@@ -155,7 +148,6 @@ jobs:
           echo "commit=" >> $GITHUB_ENV
       - name: Release and Upload Assets
         uses: ncipollo/release-action@v1
-        if: ${{ env.commit }}
         with:
           name: ${{ env.tag }}
           tag: ${{ env.tag }}
@@ -167,7 +159,6 @@ jobs:
             TVBoxOSC/apk/source-${{ env.commitS }}.*
      
       - name: Push to master
-        if: ${{ env.commit }}
         run: |
           rm -rf TVBoxOSC
           git reset --hard
