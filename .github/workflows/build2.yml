@@ -1,8 +1,6 @@
 name: Build2
 
 on:
-  schedule:
-    - cron: 59 */8 * * *
   workflow_dispatch:
     inputs:
       rebuild:
@@ -21,10 +19,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - userName: takagen99
-            repoName: Box
-            branchName: main
-            java_ver: 17
           - userName: rexyu
             repoName: Box
             branchName: main
