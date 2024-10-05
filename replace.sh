@@ -10,5 +10,12 @@ cp -rf ../Box/* ./
 sed -i 's/rootProject.name = "TVBox"/rootProject.name = "超级TV"/g' ./settings.gradle
 sed -i 's/<string name="app_name">TVBox<\/string>/<string name="app_name">超级TV<\/string>/g' ./app/src/main/res/values-zh/strings.xml
 
+## 增加小米电视支持
+ sed -i '/generic  {/i \
+xiaomi {\
+    dimension = "abi"\
+    ndk {\
+        abiFilters '\''armeabi-v7a'\''\
+    }\
+}' build.gradle
 
-cat app/src/main/res/layout/dialog_about.xml
