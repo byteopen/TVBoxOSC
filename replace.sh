@@ -17,5 +17,5 @@ xiaomi {\
     ndk {\
         abiFilters '\''armeabi-v7a'\''\
     }\
-}' build.gradle
+}' ./app/build.gradle
 
